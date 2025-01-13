@@ -1,8 +1,9 @@
 import fetch from 'node-fetch';
 import express from 'express';
+import path from 'path';
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3002; // Alterar a porta para 3002
 
 // Middleware para adicionar cabeçalhos CORS
 app.use((req, res, next) => {
@@ -13,6 +14,14 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+
+// Servir arquivos estáticos
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '..', 'formulario-jf')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'formulario-jf', 'index.html'));
+});
 
 app.post('/proxy', async (req, res) => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
