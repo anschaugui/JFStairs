@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anschaugui/formulariooJfStairs.git"
+    "url": "git+ssh://git@github.com:anschaugui/tentativa2.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anschaugui/formulariooJfStairs/issues"
+    "url": "https://github.com/anschaugui/tentativa2/issues"
   },
-  "homepage": "https://github.com/anschaugui/formulariooJfStairs#readme",
+  "homepage": "https://github.com/anschaugui/tentativa2#readme",
   "dependencies": {
     "express": "^4.21.2",
     "google-spreadsheet": "^4.1.4",
