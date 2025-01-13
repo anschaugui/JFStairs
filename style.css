@@ -1,0 +1,852 @@
+/* Estilo geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+/* Garantir que o body e o html ocupem toda a altura da página */
+html, body {
+    height: 100%;  /* Garantir que a altura da página ocupe toda a tela */
+    margin: 0;     /* Remover margens padrão */
+    overflow: auto;  /* Desabilitar a rolagem da página */
+    display: flex;  /* Usar flexbox para centralizar o conteúdo */
+    
+    align-items: center; /* Centralizar o conteúdo verticalmente */
+    justify-content: center; /* Centralizar o conteúdo horizontalmente */
+}
+/* Layout principal */
+body {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Imagem */
+#image-container {
+    width: 45vw; /* Ocupa 50% da largura da tela */
+    height: 100vh; /* Garantir que ocupe 100% da altura da tela */
+    background-image: url('img/FLOATINGSTAIRS-GLASSRAILING2-1024x1024 (2).jpg');
+    background-size: cover;
+    background-position: center;
+    margin-top: 0; /* Ajustado para começar no topo */
+}
+
+/* Formulário */
+.container {
+    margin-top: 60px;
+    width: 65vw; /* Ocupa 65% da largura da tela */
+    height: auto; /* Permitir que a altura seja ajustada conforme o conteúdo */
+    background-color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #ddd;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Adicionar rolagem no formulário se necessário */
+}
+
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.step-header div {
+    text-align: center;
+    padding: 10px;
+    color: #888;
+    font-weight: bold;
+    flex: 1;
+    cursor: pointer;
+}
+
+.step-header .active {
+    color: #E3A03B;
+    border-bottom: 2px solid #E3A03B;
+}
+
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: #072927;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #004d47;
+}
+
+.next-button {
+    background-color: #072927;
+    margin-top: 40px; /* Aumenta a distância entre o botão e as opções */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 120vh; /* Opcional: define uma largura máxima para o botão */
+    display: block;
+    text-align: center;
+}
+
+.next-button:hover {
+    background-color: #004d47;
+}
+
+.option-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajuste para várias colunas */
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.option {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;     
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.option:hover {
+    transform: scale(1.05); /* Efeito de aumentar ao passar o mouse */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.option img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.option p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+.option.selected {
+    border-color: #072927;
+    background-color: #f0f8f8;
+}
+
+/* Container do header */
+.header {
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 50px; /* Definindo a altura do header */
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 24px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+/* Link "Back to Paragon" e título do produto */
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #333;
+}
+
+.back-link {
+    font-size: 0.9em;
+    color: #007acc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.back-link::before {
+    content: '←';
+    margin-right: 5px;
+}
+
+.product-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-price {
+    font-size: 1em;
+    color: #888;
+}
+
+/* Botão de ajuda */
+.help-button {
+    background-color: #072927;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.help-button:hover {
+    background-color: #004d47;
+}
+
+/* Estilo para os rótulos */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Estilo para os campos de seleção */
+.select-box {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;  /* Aumentando o espaçamento entre os campos */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border 0.3s ease;
+}
+
+/* Efeito de foco nos campos de seleção */
+.select-box:focus {
+    border-color: #2a4d5c;
+    outline: none;
+}
+
+/* Seção Tread */
+#tread-section {
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+#tread-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Subtítulo */
+#tread-section p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Texto da opção de seleção */
+#tread-section h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Seção Accessories */
+#accessories-section {
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+#accessories-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Subtítulo */
+#accessories-section p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Texto da opção de seleção */
+#accessories-section h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+/*summary*/
+/* Título da seção */
+.section-title {
+    margin-top: 20px;
+    font-size: 20px; /* Reduz o tamanho do título */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; /* Espaçamento inferior */
+    text-align: left; /* Centraliza o título */
+}
+
+
+
+.compact-form input {
+    width: 100%; /* Ocupa toda a largura do container */
+    padding: 8px; /* Reduz o espaçamento interno */
+    margin-bottom: 10px; /* Reduz espaço entre os campos */
+    border: 1px solid #ccc; /* Define borda leve */
+    border-radius: 4px; /* Bordas arredondadas menores */
+    font-size: 14px; /* Tamanho de fonte menor */
+}
+
+/* Botão do formulário */
+.form-submit-button {
+    width: 100%; /* Ocupa toda a largura do container */
+    padding: 10px; /* Reduz o espaçamento interno */
+    background-color: #072927;
+    color: white;
+    border: none;
+    border-radius: 4px; /* Bordas arredondadas menores */
+    font-size: 14px; /* Reduz o tamanho da fonte */
+    cursor: pointer;
+    margin-top: 10px; /* Espaçamento superior */
+}
+
+.form-submit-button:hover {
+    background-color: #004d47; /* Fundo mais escuro no hover */
+}
+
+/* Resumo compactado */
+.summary-container {
+    font-size: 14px; /* Tamanho menor para o texto do resumo */
+    line-height: 1.4; /* Reduz o espaçamento entre linhas */
+    color: #555; /* Cor mais leve para o texto */
+    margin-top: 10px; /* Espaçamento superior */
+}
+
+.summary-container p {
+    margin-bottom: 5px; /* Reduz espaço entre os parágrafos */
+}
+
+
+
+
+/* Para telas maiores - layout lado a lado */
+@media (min-width: 1025px) {
+    body {
+        flex-direction: row;
+    }
+
+    .image-container {
+        width: 50vw;
+        height: 100%;
+    }
+
+    .container {
+        width: 65vw;
+        height: 100vh;
+    }
+}
+
+/* Layout para tablets */
+@media (max-width: 1024px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container {
+        width: 100vw;
+        height: 50vh; /* Ajuste a altura conforme necessário */
+        margin-top: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: auto;
+        padding: 15px;
+        margin-top: 0;
+    }
+}
+
+/* Layout para dispositivos móveis */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container {
+        width: 100vw;
+        height: 50vh;
+        margin-top: 0;
+    }
+
+    .container {
+        width: 100vw;
+        padding: 10px;
+    }
+
+    .step-header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .step-header div {
+        flex: 1 1 45%;
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    .option-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .option {
+        width: 48%; /* Espaçamento maior entre as opções */
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .submit-button, .next-button {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+
+/* Layout para dispositivos muito pequenos */
+@media (max-width: 480px) {
+    .image-container {
+        height: 40vh;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px;
+    }
+
+    .logo-text, .product-title, .product-price {
+        font-size: 1em;
+    }
+
+    .back-link, .help-button {
+        font-size: 0.8em;
+    }
+
+    .step-header div {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    .option img {
+        width: 60px;
+    }
+}
+
+/* Estilo do Resumo */
+#summary-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#summary-section p {
+    font-size: 1rem;
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+#summary-section h2 {
+    margin-bottom: 10px;
+}
+
+#summary-section strong {
+    font-weight: bold;
+}
+
+#cadastro-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#cadastro-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#cadastro-form button {
+    width: 100%;
+    background-color: #072927;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#cadastro-form button:hover {
+    background-color: #004d47;
+}
+
+/* Estilo do banner */
+.banner {
+    margin-top: 50px; /* Aumenta o espaço superior para posicionar o banner mais para baixo */
+    padding: 20px;
+    background-color: #F9F8F4; /* Cor de fundo suave */
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: static; /* Banner no fluxo normal, não fixado */
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Ajustando o tamanho da imagem do banner */
+.banner-image {
+    max-width: 100px; /* Diminuindo o tamanho da imagem */
+    margin-right: 20px;
+    height: auto;
+}
+
+/* Ajuste do texto do banner */
+.banner-text {
+    max-width: 550px; /* Ajustando a largura do texto */
+}
+
+.banner h3 {
+    font-size: 1.1rem; /* Reduzindo o tamanho da fonte */
+    font-weight: bold;
+    margin: 0;
+}
+
+.banner p {
+    font-size: 0.9rem; /* Diminuindo o tamanho do texto */
+    color: #333;
+}
+
+/* Ajustando o padding do conteúdo para não sobrepor o banner */
+.form-section {
+    padding-bottom: 200px; /* Aumentando o espaço inferior para garantir que o banner não sobreponha o conteúdo */
+}
+
+
+
+/* Botão Previous */
+.previous-button {
+    background: none; /* Remove o fundo */
+    color: #007BFF; /* Azul no texto */
+    text-decoration: underline; /* Adiciona sublinhado */
+    cursor: pointer; /* Indica clicável */
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    width: 100%;
+    max-width: 120vh; /* Opcional: define uma largura máxima para o botão */
+    display: block;
+    text-align: center;
+}
+
+/* Efeito ao passar o mouse por cima */
+.previous-button:hover {
+    color: #0056b3; /* Cor mais escura ao passar o mouse */
+    text-decoration: underline; /* Mantém o sublinhado */
+}
+
+/* Efeito ao pressionar o botão */
+.previous-button:active {
+    color: #003f7f; /* Cor ainda mais escura ao pressionar */
+}
+
+/* Efeito de foco (acessibilidade) */
+.previous-button:focus {
+    outline: none; /* Remove o contorno padrão */
+    text-decoration: underline; /* Mantém o sublinhado */
+    color: #0056b3; /* Cor mais escura para foco */
+}
+
+/* Botão desabilitado */
+.previous-button:disabled {
+    color: #c6c6c6; /* Cinza para indicar desabilitado */
+    cursor: not-allowed; /* Mostra que não é clicável */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+
+/* Modal container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Ensure it is above other content */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(7, 41, 39, 0.8); /* Fundo semi-transparente com #072927 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #FFFFFF; /* Fundo branco */
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Close button */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #072927; /* Cor escura da paleta */
+    cursor: pointer;
+}
+
+/* Título do modal */
+.modal-content h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #072927; /* Cor escura */
+    margin-bottom: 10px;
+}
+
+/* Texto do modal */
+.modal-content p {
+    font-size: 14px;
+    color: #072927;
+    margin-bottom: 20px;
+}
+
+/* Link dentro do modal */
+.modal-content a {
+    color: #E3A03B; /* Dourado */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.modal-content a:hover {
+    text-decoration: underline;
+}
+
+/* Form styles */
+#design-help-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left; /* Alinha os rótulos e inputs à esquerda */
+}
+
+#design-help-form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #072927; /* Cor escura */
+}
+
+#design-help-form input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #E3A03B; /* Borda dourada */
+    border-radius: 4px;
+    background-color: #FFFFFF; /* Fundo branco */
+}
+
+#design-help-form input:focus {
+    outline: none;
+    border-color: #072927; /* Destaque ao focar */
+}
+
+/* CAPTCHA */
+.captcha {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #072927;
+}
+
+.captcha input {
+    margin-right: 5px;
+}
+
+/* Botão de envio */
+.form-submit-button {
+    background-color: #E3A03B; /* Dourado */
+    color: #FFFFFF; /* Texto branco */
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-submit-button:hover {
+    background-color: #072927; /* Cor escura no hover */
+    color: #FFFFFF; /* Texto branco */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%; /* Ajusta largura em telas menores */
+        padding: 15px;
+    }
+
+    #design-help-form label {
+        font-size: 12px;
+    }
+
+    #design-help-form input {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .form-submit-button {
+        padding: 10px;
+        font-size: 12px;
+    }
+}
+
+/* Estilo geral para as seções do formulário */
+.form-section {
+    position: relative; /* Define cada seção como referência para posicionamento do botão */
+    padding-top: 40px; /* Garante espaço suficiente para o botão Details */
+}
+
+/* Estilo do botão Details */
+.details-button {
+    position: absolute; /* Posiciona o botão em relação à seção */
+    top: 10px; /* Distância do topo da seção */
+    right: 10px; /* Distância da lateral direita da seção */
+    background-color: transparent; /* Fundo transparente */
+    color: #007acc; /* Cor do texto */
+    font-size: 14px; /* Tamanho da fonte */
+    border: none; /* Remove bordas */
+    cursor: pointer; /* Mostra que é clicável */
+    text-decoration: underline; /* Adiciona sublinhado */
+    font-weight: bold;
+}
+
+/* Hover no botão Details */
+.details-button:hover {
+    color: #0056b3; /* Altera a cor ao passar o mouse */
+    text-decoration: none; /* Remove o sublinhado no hover */
+}
+
+
+
+
+.form-section {
+    display: none; /* Oculta todas as seções por padrão */
+}
+
+.form-section.active {
+    display: block; /* Exibe a seção ativa */
+}
+
+.stair-option {
+    padding: 25px; /* Aumenta o espaçamento interno */
+    margin-bottom: 15px; /* Maior espaçamento entre os itens */
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona sombra suave */
+    text-align: center; /* Centraliza o texto */
+    font-size: 1.2rem; /* Aumenta o tamanho do texto */
+    line-height: 1.5;
+    min-height: 60px; /* Define uma altura mínima */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stair-option:hover {
+    background-color: #f9f9f9;
+    border-color: #E3A03B; /* Amarelo destaque */
+}
+
+.stair-option.selected {
+    background-color: #f9f9f9;
+    border-color: #E3A03B; /* Amarelo destaque */
+    box-shadow: 0 0 8px rgba(227, 160, 59, 0.5);
+    transform: scale(1.02); /* Efeito sutil de destaque */
+}
