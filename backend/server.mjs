@@ -13,26 +13,27 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.json());
+// Middleware para servir arquivos estáticos
+const __dirname = path.resolve(); // Caminho para a raiz do projeto
 
-// Caminho para a raiz do projeto
-const __dirname = path.resolve(); 
-
-// Caminho para a pasta 'public' e para a pasta 'img' dentro de 'backend'
+// Caminho para as pastas públicas
 const publicPath = path.join(__dirname, 'public');
 const imgPath = path.join(__dirname, 'backend', 'img');
 
-// Servir arquivos estáticos das pastas 'public' e 'img'
+// Servindo arquivos estáticos
 app.use(express.static(publicPath)); // Arquivos da pasta 'public'
-app.use('/img', express.static(imgPath)); // Arquivos da pasta 'img' no backend
+app.use('/img', express.static(imgPath)); // Arquivos da pasta 'img' dentro de 'backend'
 
-// Rota para enviar o arquivo index.html
+// Rota para exibir o arquivo index.html
 app.get('/', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html')); // Envia o index.html da pasta 'public'
 });
 
+// Rota proxy para enviar dados para o script do Google
 app.post('/proxy', async (req, res) => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
+    
+    // Estrutura de dados a ser enviada ao Google Script
     const payload = {
         stairType: req.body.stairType,
         stairLocation: req.body.stairLocation,
@@ -56,13 +57,14 @@ app.post('/proxy', async (req, res) => {
             const data = JSON.parse(text);
             res.json(data);
         } catch (error) {
-            res.status(500).send('Erro ao enviar os dados.');
+            res.status(500).send('Erro ao processar os dados recebidos do Google Script.');
         }
     } catch (error) {
-        res.status(500).send('Erro ao enviar os dados.');
+        res.status(500).send('Erro ao enviar os dados para o Google Script.');
     }
 });
 
+// Inicia o servidor
 app.listen(port, () => {
-    console.log(`Servidor intermediário rodando em http://localhost:${port}`);
+    console.log(`Servidor rodando em http://localhost:${port}`);
 });
