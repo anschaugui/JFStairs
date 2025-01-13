@@ -1,0 +1,27 @@
+{
+  "name": "formulariojfstairs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anschaugui/formulariooJfStairs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anschaugui/formulariooJfStairs/issues"
+  },
+  "homepage": "https://github.com/anschaugui/formulariooJfStairs#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "google-spreadsheet": "^4.1.4",
+    "node-fetch": "^3.3.2"
+  },
+  "type": "module"
+}
