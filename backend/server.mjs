@@ -14,26 +14,23 @@ app.use((req, res, next) => {
 });
 
 // Middleware para servir arquivos estáticos
-const __dirname = path.resolve(); // Caminho para a raiz do projeto
+const __dirname = path.resolve();
 
-// Caminho para as pastas públicas
-const publicPath = path.join(__dirname, 'public');
-const imgPath = path.join(__dirname, 'backend', 'img');
+// Caminho para a pasta 'public' dentro de 'backend'
+const publicPath = path.join(__dirname, 'backend', 'public'); // Caminho para a pasta 'public'
+const imgPath = path.join(__dirname, 'backend', 'public', 'img'); // Caminho para as imagens dentro de 'public'
 
-// Servindo arquivos estáticos
+// Servindo arquivos estáticos das pastas 'public' e 'img'
 app.use(express.static(publicPath)); // Arquivos da pasta 'public'
-app.use('/img', express.static(imgPath)); // Arquivos da pasta 'img' dentro de 'backend'
+app.use('/img', express.static(imgPath)); // Arquivos da pasta 'img'
 
-// Rota para exibir o arquivo index.html
 app.get('/', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html')); // Envia o index.html da pasta 'public'
 });
 
-// Rota proxy para enviar dados para o script do Google
 app.post('/proxy', async (req, res) => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
-    
-    // Estrutura de dados a ser enviada ao Google Script
+
     const payload = {
         stairType: req.body.stairType,
         stairLocation: req.body.stairLocation,
