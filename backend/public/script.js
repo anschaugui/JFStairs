@@ -168,18 +168,24 @@ function sendFormData() {
         body: JSON.stringify(formData)
     })
     .then(response => {
+        console.log('Resposta do servidor:', response);
         if (response.ok) {
             alert('Dados enviados com sucesso!');
+            return response.json(); // Caso o servidor envie um JSON como resposta
         } else {
-            alert('Erro ao enviar dados.');
+            throw new Error(`Erro no envio: ${response.status} ${response.statusText}`);
         }
     })
+    .then(data => {
+        console.log('Dados retornados pelo servidor:', data);
+    })
     .catch(error => {
-        console.error('Erro:', error);
-        alert('Erro ao enviar dados.');
+        console.error('Erro capturado:', error);
+        alert('Erro ao enviar dados. Verifique o console para mais detalhes.');
     });
+    
 }
-
+    
 function sendDesignHelpFormData() {
     const firstName = document.getElementById('first-name').value;
     const lastName = document.getElementById('last-name').value;
@@ -196,7 +202,7 @@ function sendDesignHelpFormData() {
     console.log('Enviando dados do modal:', formData); // Log dos dados enviados
 
     // URL do servidor intermediário
-    const proxyURL = 'https://jfstairs-6kyn.onrender.com'; // Certifique-se de que está usando a porta 3001
+    const proxyURL = 'https://jfstairs-6kyn.onrender.com'; 
 
     // Envia os dados para o servidor intermediário
     fetch(proxyURL, {
