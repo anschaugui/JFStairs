@@ -67,5 +67,5 @@ app.post('/proxy', async (req, res) => {
 // Inicia o servidor
 app.listen(port, () => {
     console.log(`Servidor intermediário rodando em http://localhost:${port}`);
-    console.log(`Acesse em produção: http://<sua-url-render>.onrender.com/`);
+    console.log(`Acesse em produção: https://jfstairs-6kyn.onrender.com`);
 });
