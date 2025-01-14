@@ -162,7 +162,7 @@ function sendFormData() {
         phone: phone
     };
 
-    fetch('http://localhost:3001/proxy', {
+    fetch('https://jfstairs-6kyn.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -196,7 +196,7 @@ function sendDesignHelpFormData() {
     console.log('Enviando dados do modal:', formData); // Log dos dados enviados
 
     // URL do servidor intermediário
-    const proxyURL = 'http://localhost:3001/proxy'; // Certifique-se de que está usando a porta 3001
+    const proxyURL = 'https://jfstairs-6kyn.onrender.com'; // Certifique-se de que está usando a porta 3001
 
     // Envia os dados para o servidor intermediário
     fetch(proxyURL, {

@@ -7,7 +7,7 @@ const port = process.env.PORT || 3002;
 
 // Middleware para adicionar cabeçalhos CORS
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', '*'); // Permite acesso de qualquer origem
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
@@ -57,9 +57,11 @@ app.post('/proxy', async (req, res) => {
             const data = JSON.parse(text);
             res.json(data);
         } catch (error) {
+            console.error('Erro ao processar os dados recebidos:', error.message);
             res.status(500).send('Erro ao processar os dados recebidos.');
         }
     } catch (error) {
+        console.error('Erro ao enviar os dados para o Google Apps Script:', error.message);
         res.status(500).send('Erro ao enviar os dados.');
     }
 });
