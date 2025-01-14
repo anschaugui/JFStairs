@@ -162,7 +162,7 @@ function sendFormData() {
         phone: phone
     };
 
-    fetch('https://jfstairs-6kyn.onrender.com', {
+    fetch('https://jfstairs-6kyn.onrender.com/proxy', { // Alterado para /proxy
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -183,8 +183,8 @@ function sendFormData() {
         console.error('Erro capturado:', error);
         alert('Erro ao enviar dados. Verifique o console para mais detalhes.');
     });
-    
 }
+
     
 function sendDesignHelpFormData() {
     const firstName = document.getElementById('first-name').value;

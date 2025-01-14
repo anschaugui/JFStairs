@@ -34,6 +34,8 @@ app.get('/', (req, res) => {
 // Rota para proxy (integrada com Google Apps Script)
 app.post('/proxy', async (req, res) => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
+    
+    // Prepare os dados recebidos no corpo da requisição
     const payload = {
         stairType: req.body.stairType,
         stairLocation: req.body.stairLocation,
@@ -55,7 +57,7 @@ app.post('/proxy', async (req, res) => {
 
         try {
             const data = JSON.parse(text);
-            res.json(data);
+            res.json(data); // Retorna a resposta como JSON
         } catch (error) {
             console.error('Erro ao processar os dados recebidos:', error.message);
             res.status(500).send('Erro ao processar os dados recebidos.');
