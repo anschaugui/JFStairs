@@ -186,40 +186,44 @@ function sendFormData() {
 }
 
     
-function sendDesignHelpFormData() {
-    const firstName = document.getElementById('first-name').value;
-    const lastName = document.getElementById('last-name').value;
-    const email = document.querySelector('#design-help-form input[name="email"]').value;
-    const phone = document.querySelector('#design-help-form input[name="phone"]').value;
+function sendFormData() {
+    const email = document.querySelector('#cadastro-form input[name="email"]').value;
+    const phone = document.querySelector('#cadastro-form input[name="phone"]').value;
 
     const formData = {
-        firstName: firstName,
-        lastName: lastName,
+        stairType: selections.stairType || 'Not selected',
+        stairLocation: selections.stairLocation || 'Not selected',
+        railingType: selections.railingType || 'Not selected',
+        treadType: selections.treadType || 'Not selected',
+        firstName: document.getElementById('name').value, // Considerando que 'name' é o primeiro nome
+        lastName: document.getElementById('last-name').value, // Captura do sobrenome
         email: email,
         phone: phone
     };
 
-    console.log('Enviando dados do modal:', formData); // Log dos dados enviados
-
-    // URL do servidor intermediário
-    const proxyURL = 'https://jfstairs-6kyn.onrender.com'; 
-
-    // Envia os dados para o servidor intermediário
-    fetch(proxyURL, {
+    fetch('https://jfstairs-6kyn.onrender.com/proxy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
     })
-        .then(response => {
-            if (response.ok) {
-                alert('Dados enviados com sucesso!');
-                closeModal(); // Fecha o modal após o envio bem-sucedido
-            } else {
-                alert('Erro ao enviar os dados. Tente novamente.');
-            }
-        })
-        .catch(error => console.error('Erro:', error));
+    .then(response => {
+        console.log('Resposta do servidor:', response);
+        if (response.ok) {
+            alert('Dados enviados com sucesso!');
+            return response.json();
+        } else {
+            throw new Error(`Erro no envio: ${response.status} ${response.statusText}`);
+        }
+    })
+    .then(data => {
+        console.log('Dados retornados pelo servidor:', data);
+    })
+    .catch(error => {
+        console.error('Erro capturado:', error);
+        alert('Erro ao enviar dados. Verifique o console para mais detalhes.');
+    });
 }
+
 
 // Gerencia a decisão sobre alterar o Railing
 function handleRailingDecision(element, value) {
