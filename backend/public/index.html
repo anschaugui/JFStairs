@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,33 +20,31 @@
         </div>
         <a href="#" class="help-button" onclick="openModal()">Need Design Help?</a>
 
-        <!-- Modal -->
-        <div id="design-help-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-button" onclick="closeModal()">&times;</span>
-                <h2>Need Design Help?</h2>
-                <p>Our expert designers can design the perfect stair solution based on your requirements and budget.
-                    You'll get quick and accurate pricing plus a FREE 3D model of your stair! <a href="#">Learn more</a>
-                </p>
-                <form id="design-help-form">
-                    <label for="first-name">First*</label>
-                    <input type="text" id="first-name" name="first-name" required>
+<!-- Modal -->
+<div id="design-help-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <h2>Need Design Help?</h2>
+        <p>Our expert designers can design the perfect stair solution based on your requirements and budget. You'll get quick and accurate pricing plus a FREE 3D model of your stair! <a href="#">Learn more</a></p>
+        <form id="design-help-form">
+            <label for="first-name">First*</label>
+            <input type="text" id="first-name" name="first-name" required>
 
-                    <label for="last-name">Last*</label>
-                    <input type="text" id="last-name" name="last-name" required>
+            <label for="last-name">Last*</label>
+            <input type="text" id="last-name" name="last-name" required>
 
-                    <label for="email">Email*</label>
-                    <input type="email" id="email" name="email" required>
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" required>
 
-                    <label for="phone">Phone*</label>
-                    <input type="tel" id="phone" name="phone" required>
+            <label for="phone">Phone*</label>
+            <input type="tel" id="phone" name="phone" required>
 
-                    <p>One of our friendly designers will be in touch with you soon.</p>
+            <p>One of our friendly designers will be in touch with you soon.</p>
 
-                    <button type="submit" class="form-submit-button">Schedule My Free Consultation</button>
-                </form>
-            </div>
-        </div>
+            <button type="submit" class="form-submit-button">Schedule My Free Consultation</button>
+        </form>
+    </div>
+</div>
     </header>
 
     <div id="image-container"></div>
@@ -61,24 +58,25 @@
             <div class="step" data-step="5" onclick="goToStep(5)">05 <br> Treads</div>
             <div class="step" data-step="6" onclick="goToStep(6)">06 <br> Summary</div>
         </div>
-
+        
         <!-- Seção Tipo de Escada -->
         <div class="form-section active" id="stair-type-section">
             <h2>What kind of staircase are you interested in?</h2>
-            <div class="stair-option selected"
+            <div class="stair-option selected" 
                 onclick="selectOption(this, 'stairType', 'Straight Staircase', 'FLOATINGSTAIRS-GLASSRAILING2-1024x1024 (2).jpg')">
                 <strong>Straight Staircase</strong>
             </div>
             <div class="stair-options">
-                <div class="stair-option"
-                    onclick="selectOption(this, 'stairType', 'Floating Stairs', 'floatingstairs.png')">
-                    <strong>Floating Stairs</strong>
-                </div>
-                <div class="stair-option"
+                <div class="stair-option" 
+                onclick="selectOption(this, 'stairType', 'Floating Stairs', 'floatingstairs.png')">
+                <strong>Floating Stairs</strong>
+            </div>
+                <div class="stair-option" 
                     onclick="selectOption(this, 'stairType', 'Straight Stairs with Landing', 'custom-staircase.jpg')">
                     <strong>Straight Stairs with Landing</strong>
                 </div>
-                <div class="stair-option" onclick="selectOption(this, 'stairType', 'Spiral Stairs', 'spiral.jpg')">
+                <div class="stair-option" 
+                    onclick="selectOption(this, 'stairType', 'Spiral Stairs', 'spiral.jpg')">
                     <strong>Spiral Stairs</strong>
                 </div>
             </div>
@@ -182,24 +180,19 @@
         <div class="form-section" id="summary-section">
             <div class="summary-intro">
                 <h2 class="intro-title">Free Consultation to Review Your Design</h2>
-                <p class="intro-text">Our designers are experts at finding the right mix of price and design. They will
-                    walk you through your selected options and refine them to get the price point you need with the look
-                    and feel you desire.</p>
+                <p class="intro-text">Our designers are experts at finding the right mix of price and design. They will walk you through your selected options and refine them to get the price point you need with the look and feel you desire.</p>
             </div>
             <h2 class="section-title">Cadastro</h2>
             <form id="cadastro-form" class="compact-form">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required>
-
-                <label for="last_name">Sobrenome:</label>
-                <input type="text" id="last_name" name="last_name" required>
-
+                
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-
+                
                 <label for="phone">Telefone:</label>
                 <input type="tel" id="phone" name="phone" required oninput="mascaraTelefone(this)">
-
+                
                 <button type="submit" class="form-submit-button">Enviar</button>
             </form>
 
@@ -232,5 +225,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>

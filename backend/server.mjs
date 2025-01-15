@@ -42,7 +42,6 @@ app.post('/proxy', async (req, res) => {
         railingType: req.body.railingType,
         treadType: req.body.treadType,
         name: req.body.name,
-        lastName: req.body.lastName, // Adicionado o campo lastName
         email: req.body.email,
         phone: req.body.phone
     };
