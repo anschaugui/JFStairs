@@ -36,17 +36,22 @@ app.post('/proxy', async (req, res) => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
     
     // Prepare os dados recebidos no corpo da requisição
-    const payload = {
-        stairType: req.body.stairType,
-        stairLocation: req.body.stairLocation,
-        railingType: req.body.railingType,
-        treadType: req.body.treadType,
-        name: req.body.name,
-        lastName: req.body.lastName, // Adicionado lastName
-        email: req.body.email,
-        phone: req.body.phone
-    };
+    app.post('/proxy', async (req, res) => {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
     
+        // Prepare os dados recebidos no corpo da requisição
+        const payload = {
+            stairType: req.body.stairType,
+            stairLocation: req.body.stairLocation,
+            railingType: req.body.railingType,
+            treadType: req.body.treadType,
+            name: req.body.name,
+            lastName: req.body.lastName, // Certifique-se de que lastName está sendo incluído
+            email: req.body.email,
+            phone: req.body.phone
+        };
+    
+        console.log('Payload enviado ao Google Apps Script:', payload); // Debug
 
     try {
         const response = await fetch(scriptURL, {
@@ -59,7 +64,7 @@ app.post('/proxy', async (req, res) => {
 
         try {
             const data = JSON.parse(text);
-            res.json(data); // Retorna a resposta como JSON
+            res.json(data);
         } catch (error) {
             console.error('Erro ao processar os dados recebidos:', error.message);
             res.status(500).send('Erro ao processar os dados recebidos.');
@@ -68,10 +73,11 @@ app.post('/proxy', async (req, res) => {
         console.error('Erro ao enviar os dados para o Google Apps Script:', error.message);
         res.status(500).send('Erro ao enviar os dados.');
     }
-});
+})
+    
 
 // Inicia o servidor
 app.listen(port, () => {
     console.log(`Servidor intermediário rodando em http://localhost:${port}`);
     console.log(`Acesse em produção: https://jfstairs-6kyn.onrender.com`);
-});
+})
