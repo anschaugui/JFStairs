@@ -85,7 +85,7 @@ body {
 }
 
 .submit-button {
-    background-color: #072927;
+    background-color: #E3A03B;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -100,7 +100,7 @@ body {
 }
 
 .next-button {
-    background-color: #072927;
+    background-color: #E3A03B;
     margin-top: 40px; /* Aumenta a distância entre o botão e as opções */
     color: #fff;
     padding: 10px 20px;
@@ -153,7 +153,7 @@ body {
 }
 
 .option.selected {
-    border-color: #072927;
+    border-color: #E3A03B;
     background-color: #f0f8f8;
 }
 
@@ -225,7 +225,7 @@ body {
 
 /* Botão de ajuda */
 .help-button {
-    background-color: #072927;
+    background-color: #E3A03B;
     color: #fff;
     padding: 8px 12px;
     border: none;
@@ -358,7 +358,7 @@ label {
 .form-submit-button {
     width: 100%; /* Ocupa toda a largura do container */
     padding: 10px; /* Reduz o espaçamento interno */
-    background-color: #072927;
+    background-color: #E3A03B;
     color: white;
     border: none;
     border-radius: 4px; /* Bordas arredondadas menores */
@@ -546,7 +546,7 @@ label {
 
 #cadastro-form button {
     width: 100%;
-    background-color: #072927;
+    background-color: #E3A03B;
     color: white;
     border: none;
     padding: 15px;
@@ -677,7 +677,7 @@ label {
     right: 20px;
     font-size: 20px;
     font-weight: bold;
-    color: #072927; /* Cor escura da paleta */
+    color: #E3A03B; /* Cor escura da paleta */
     cursor: pointer;
 }
 
@@ -685,14 +685,14 @@ label {
 .modal-content h2 {
     font-size: 18px;
     font-weight: bold;
-    color: #072927; /* Cor escura */
+    color: #E3A03B; /* Cor escura */
     margin-bottom: 10px;
 }
 
 /* Texto do modal */
 .modal-content p {
     font-size: 14px;
-    color: #072927;
+    color: #E3A03B;
     margin-bottom: 20px;
 }
 
@@ -718,7 +718,7 @@ label {
 #design-help-form label {
     font-size: 14px;
     font-weight: bold;
-    color: #072927; /* Cor escura */
+    color: #E3A03B; /* Cor escura */
 }
 
 #design-help-form input {
@@ -731,14 +731,14 @@ label {
 
 #design-help-form input:focus {
     outline: none;
-    border-color: #072927; /* Destaque ao focar */
+    border-color: #E3A03B; /* Destaque ao focar */
 }
 
 /* CAPTCHA */
 .captcha {
     margin: 10px 0;
     font-size: 14px;
-    color: #072927;
+    color: #E3A03B;
 }
 
 .captcha input {
@@ -759,7 +759,7 @@ label {
 }
 
 .form-submit-button:hover {
-    background-color: #072927; /* Cor escura no hover */
+    background-color: #E3A03B; /* Cor escura no hover */
     color: #FFFFFF; /* Texto branco */
 }
 

@@ -15,8 +15,6 @@
         </div>
         <div class="header-content">
             <a href="index.html" class="back-link">Back to JF</a>
-            <span class="product-title">The Retreat Spiral Stair</span>
-            <span class="product-price">| $$$</span>
         </div>
         <a href="#" class="help-button" onclick="openModal()">Need Design Help?</a>
 
@@ -51,9 +49,9 @@
 
     <div class="container">
         <div class="step-header">
-            <div class="step active" data-step="1" onclick="goToStep(1)">01 <br> staircase model</div>
-            <div class="step" data-step="2" onclick="goToStep(2)">02 <br> Etapa 2</div>
-            <div class="step" data-step="3" onclick="goToStep(3)">03 <br> Etapa 3</div>
+            <div class="step active" data-step="1" onclick="goToStep(1)">01 <br> Configuration</div>
+            <div class="step" data-step="2" onclick="goToStep(2)">02 <br> Type</div>
+            <div class="step" data-step="3" onclick="goToStep(3)">03 <br> What do you need done?</div>
             <div class="step" data-step="4" onclick="goToStep(4)">04 <br> Railing</div>
             <div class="step" data-step="5" onclick="goToStep(5)">05 <br> Treads</div>
             <div class="step" data-step="6" onclick="goToStep(6)">06 <br> Summary</div>
@@ -61,7 +59,7 @@
         
         <!-- Seção Tipo de Escada -->
         <div class="form-section active" id="stair-type-section">
-            <h2>What kind of staircase are you interested in?</h2>
+            <h2>What is the configuration of your staircase?</h2>
             <div class="stair-option selected" 
                 onclick="selectOption(this, 'stairType', 'Straight Staircase', 'FLOATINGSTAIRS-GLASSRAILING2-1024x1024 (2).jpg')">
                 <strong>Straight Staircase</strong>
@@ -85,7 +83,7 @@
 
         <!-- Seção Tipo de Escada (Interior ou Exterior) -->
         <div class="form-section" id="stair-location-section">
-            <h2>Sua escada é indoor ou outdoor?</h2>
+            <h2>Type</h2>
             <p>Selecione o tipo de escada que você possui:</p>
             <div class="stair-location-options">
                 <!-- Removida a lógica de imagem (parâmetro imagePath) -->
@@ -102,7 +100,7 @@
 
         <!-- Seção Pergunta sobre Design Help -->
         <div class="form-section" id="design-help-section">
-            <h2>Você já sabe o que deseja remodelar em sua escada ou precisa de design help?</h2>
+            <h2>What do you need done?</h2>
             <p>Selecione uma opção abaixo:</p>
             <div class="design-help-options">
                 <div class="stair-option" onclick="selectOption(this, 'designHelp', 'Sim')">
@@ -131,7 +129,7 @@
 
             <!-- Tipos de Railing (inicialmente ocultos) -->
             <div id="railing-options" style="display: none;">
-                <h3>Selecione o tipo de railing:</h3>
+                <h3>Railing</h3>
                 <div class="railing-options">
                     <div class="stair-option" onclick="selectOption(this, 'railingType', 'glass')">
                         <strong>Glass Railing</strong>
@@ -154,20 +152,20 @@
 
         <!-- Seção Tread -->
         <div class="form-section" id="tread-section">
-            <h2>Tread</h2>
+            <h2>Treads</h2>
             <p>Now let's design your steps.</p>
 
             <h3>Select a Tread Type for Your Stair</h3>
             <div class="option-container">
-                <div class="option" onclick="selectOption(this, 'treadType', 'Red Oak', '')">
+                <div class="option" onclick="selectOption(this, 'treadType', 'Red Oak', 'oakred.jpg')">
                     <img src="img/oakred.jpg" alt="Red Oak">
                     <p>Red Oak</p>
                 </div>
-                <div class="option" onclick="selectOption(this, 'treadType', 'White Oak', '')">
+                <div class="option" onclick="selectOption(this, 'treadType', 'White Oak', 'Oak-White-cclc-1024x1024-1.jpg')">
                     <img src="img/Oak-White-cclc-1024x1024-1.jpg" alt="White Oak">
                     <p>White Oak</p>
                 </div>
-                <div class="option" onclick="selectOption(this, 'treadType', 'Yellow Oak', '')">
+                <div class="option" onclick="selectOption(this, 'treadType', 'Yellow Oak', 'yellow-poplar.jpg')">
                     <img src="img/yellow-poplar.jpg" alt="Yellow Oak">
                     <p>Yellow Oak</p>
                 </div>
