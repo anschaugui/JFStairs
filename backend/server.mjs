@@ -18,13 +18,13 @@ app.use(express.json());
 // Caminho para a raiz do projeto
 const __dirname = path.resolve();
 
-// Ajuste para localizar a pasta 'public' e a pasta 'img' com base na estrutura fornecida
-const publicPath = path.join(__dirname, 'backend', 'public'); // Corrigido para buscar dentro de 'backend'
-const imgPath = path.join(publicPath, 'img'); // Pasta 'img' está dentro de 'public'
+// Localiza a pasta 'public' e a pasta 'img'
+const publicPath = path.join(__dirname, 'backend', 'public');
+const imgPath = path.join(publicPath, 'img');
 
 // Servir arquivos estáticos das pastas 'public' e 'img'
-app.use(express.static(publicPath)); // Arquivos da pasta 'public'
-app.use('/img', express.static(imgPath)); // Arquivos da pasta 'img' dentro de 'public'
+app.use(express.static(publicPath)); // Servir arquivos da pasta 'public'
+app.use('/img', express.static(imgPath)); // Servir arquivos da pasta 'img' dentro de 'public'
 
 // Rota para enviar o arquivo index.html
 app.get('/', (req, res) => {
@@ -34,26 +34,23 @@ app.get('/', (req, res) => {
 // Rota para proxy (integrada com Google Apps Script)
 app.post('/proxy', async (req, res) => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
-    
-    // Prepare os dados recebidos no corpo da requisição
-    app.post('/proxy', async (req, res) => {
-        const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
-    
-        // Prepare os dados recebidos no corpo da requisição
-        const payload = {
-            stairType: req.body.stairType,
-            stairLocation: req.body.stairLocation,
-            railingType: req.body.railingType,
-            treadType: req.body.treadType,
-            name: req.body.name,
-            lastName: req.body.lastName, // Certifique-se de que lastName está sendo incluído
-            email: req.body.email,
-            phone: req.body.phone
-        };
-    
-        console.log('Payload enviado ao Google Apps Script:', payload); // Debug
+
+    // Captura os dados enviados pelo cliente
+    const payload = {
+        stairType: req.body.stairType || 'Not provided',
+        stairLocation: req.body.stairLocation || 'Not provided',
+        railingType: req.body.railingType || 'Not provided',
+        treadType: req.body.treadType || 'Not provided',
+        name: req.body.name || 'Not provided',
+        lastName: req.body.lastName || 'Not provided', // Incluído campo lastName
+        email: req.body.email || 'Not provided',
+        phone: req.body.phone || 'Not provided'
+    };
+
+    console.log('Payload enviado ao Google Apps Script:', payload);
 
     try {
+        // Envia os dados para o Google Apps Script
         const response = await fetch(scriptURL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -62,22 +59,22 @@ app.post('/proxy', async (req, res) => {
 
         const text = await response.text();
 
+        // Tenta processar a resposta do Google Apps Script
         try {
             const data = JSON.parse(text);
-            res.json(data);
+            res.json(data); // Envia a resposta processada ao cliente
         } catch (error) {
             console.error('Erro ao processar os dados recebidos:', error.message);
-            res.status(500).send('Erro ao processar os dados recebidos.');
+            res.status(500).send('Erro ao processar os dados recebidos do Google Apps Script.');
         }
     } catch (error) {
         console.error('Erro ao enviar os dados para o Google Apps Script:', error.message);
-        res.status(500).send('Erro ao enviar os dados.');
+        res.status(500).send('Erro ao enviar os dados para o Google Apps Script.');
     }
-})
-    
+});
 
 // Inicia o servidor
 app.listen(port, () => {
     console.log(`Servidor intermediário rodando em http://localhost:${port}`);
     console.log(`Acesse em produção: https://jfstairs-6kyn.onrender.com`);
-})
+});
