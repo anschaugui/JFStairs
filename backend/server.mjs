@@ -42,9 +42,11 @@ app.post('/proxy', async (req, res) => {
         railingType: req.body.railingType,
         treadType: req.body.treadType,
         name: req.body.name,
+        lastName: req.body.lastName, // Adicionado lastName
         email: req.body.email,
         phone: req.body.phone
     };
+    
 
     try {
         const response = await fetch(scriptURL, {

@@ -158,11 +158,12 @@ function sendFormData() {
         railingType: selections.railingType || 'Not selected',
         treadType: selections.treadType || 'Not selected',
         name: document.getElementById('name').value,
+        lastName: document.getElementById('lastName').value, // Adicionado lastName
         email: email,
         phone: phone
     };
 
-    fetch('https://jfstairs-6kyn.onrender.com/proxy', { // Alterado para /proxy
+    fetch('https://jfstairs-6kyn.onrender.com/proxy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -184,6 +185,7 @@ function sendFormData() {
         alert('Erro ao enviar dados. Verifique o console para mais detalhes.');
     });
 }
+
 
     
 function sendDesignHelpFormData() {
