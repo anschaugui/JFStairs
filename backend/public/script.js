@@ -158,7 +158,6 @@ function sendFormData() {
         railingType: selections.railingType || 'Not selected',
         treadType: selections.treadType || 'Not selected',
         name: document.getElementById('name').value,
-        lastName: document.getElementById('lastName').value, // Adicionado lastName
         email: email,
         phone: phone
     };
