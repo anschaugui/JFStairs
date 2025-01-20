@@ -81,7 +81,7 @@
         <!-- Seção Tipo de Escada (Interior ou Exterior) -->
         <div class="form-section" id="stair-location-section">
             <h2>Type</h2>
-            <p>Selecione o tipo de escada que você possui:</p>
+            <p>Select the type of ladder you have:</p>
             <div class="stair-location-options">
                 <!-- Removida a lógica de imagem (parâmetro imagePath) -->
                 <div class="stair-option" onclick="selectOption(this, 'stairLocation', 'Interior', '' )">
@@ -98,7 +98,7 @@
         <!-- Seção Pergunta sobre Design Help -->
         <div class="form-section" id="design-help-section">
             <h2>What do you need done?</h2>
-            <p>Selecione uma opção abaixo:</p>
+            <p>Select an option below:</p>
             <div class="design-help-options">
                 <div class="stair-option" onclick="selectOption(this, 'designHelp', 'Sim')">
                     <strong>Sim</strong>
@@ -114,7 +114,7 @@
         <!-- Seção Pergunta sobre Railing -->
         <div class="form-section" id="design-help-section">
             <h2>Gostaria de alterar o Railing da escada?</h2>
-            <p>Selecione uma opção abaixo:</p>
+            <p>Select an option below:</p>
             <div class="design-help-options">
                 <div class="stair-option" onclick="handleRailingDecision(this, 'Sim')">
                     <strong>Sim</strong>
@@ -128,10 +128,10 @@
             <div id="railing-options" style="display: none;">
                 <h3>Railing</h3>
                 <div class="railing-options">
-                    <div class="stair-option" onclick="selectOption(this, 'railingType', 'glass')">
+                    <div class="stair-option" onclick="selectOption(this, 'railingType', 'glass', '#')"> <!-- Adicionado imagePath -->
                         <strong>Glass Railing</strong>
                     </div>
-                    <div class="stair-option" onclick="selectOption(this, 'railingType', 'horizontal')">
+                    <div class="stair-option" onclick="selectOption(this, 'railingType', 'horizontal', 'horizontal.png')">
                         <strong>Horizontal Railing</strong>
                     </div>
                     <div class="stair-option" onclick="selectOption(this, 'railingType', 'vertical')">
