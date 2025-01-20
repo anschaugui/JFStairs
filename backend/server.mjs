@@ -13,12 +13,13 @@ app.use((req, res, next) => {
     next();
 });
 
+// Middleware para parsear o corpo das requisições como JSON
 app.use(express.json());
 
 // Caminho para a raiz do projeto
 const __dirname = path.resolve();
 
-// Localiza a pasta 'public' e a pasta 'img'
+// Localiza as pastas 'public' e 'img'
 const publicPath = path.join(__dirname, 'backend', 'public');
 const imgPath = path.join(publicPath, 'img');
 
@@ -35,7 +36,7 @@ app.get('/', (req, res) => {
 app.post('/proxy', async (req, res) => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
 
-    // Captura os dados enviados pelo cliente
+    // Captura os dados enviados pelo cliente e valida os campos obrigatórios
     const payload = {
         stairType: req.body.stairType || 'Not provided',
         stairLocation: req.body.stairLocation || 'Not provided',
@@ -46,6 +47,7 @@ app.post('/proxy', async (req, res) => {
         phone: req.body.phone || 'Not provided'
     };
 
+    console.log('Dados recebidos no servidor:', req.body);
     console.log('Payload enviado ao Google Apps Script:', payload);
 
     try {
@@ -57,6 +59,7 @@ app.post('/proxy', async (req, res) => {
         });
 
         const text = await response.text();
+        console.log('Resposta do Google Apps Script:', text);
 
         // Tenta processar a resposta do Google Apps Script
         try {
@@ -75,5 +78,5 @@ app.post('/proxy', async (req, res) => {
 // Inicia o servidor
 app.listen(port, () => {
     console.log(`Servidor intermediário rodando em http://localhost:${port}`);
-    console.log(`Acesse em produção: https://jfstairs-6kyn.onrender.com`);
+    console.log('Acesse em produção: https://jfstairs-6kyn.onrender.com');
 });

@@ -13,9 +13,6 @@
             <img src="img/logo.png" alt="JF Stairs Logo"> <!-- Substitua pela URL do logo -->
             <span class="logo-text"></span>
         </div>
-        <div class="header-content">
-            <a href="index.html" class="back-link">Back to JF</a>
-        </div>
         <a href="#" class="help-button" onclick="openModal()">Need Design Help?</a>
 
 <!-- Modal -->
@@ -87,10 +84,10 @@
             <p>Selecione o tipo de escada que você possui:</p>
             <div class="stair-location-options">
                 <!-- Removida a lógica de imagem (parâmetro imagePath) -->
-                <div class="stair-option" onclick="selectOption(this, 'stairLocation', 'Interior')">
+                <div class="stair-option" onclick="selectOption(this, 'stairLocation', 'Interior', '' )">
                     <strong>Interior stairs</strong>
                 </div>
-                <div class="stair-option" onclick="selectOption(this, 'stairLocation', 'Exterior')">
+                <div class="stair-option" onclick="selectOption(this, 'stairLocation', 'Exterior', 'spiralInterior.png')">
                     <strong>Exterior stairs</strong>
                 </div>
             </div>
