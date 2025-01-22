@@ -172,36 +172,40 @@
         </div>
 
         <!-- Seção Summary & Cadastro -->
-        <div class="form-section" id="summary-section">
-            <div class="summary-intro">
-                <h2 class="intro-title">Free Consultation to Review Your Design</h2>
-                <p class="intro-text">Our designers are experts at finding the right mix of price and design. They will walk you through your selected options and refine them to get the price point you need with the look and feel you desire.</p>
-            </div>
-            <h2 class="section-title">Cadastro</h2>
-            <form id="cadastro-form" class="compact-form">
-                <label for="name">Nome completo:</label>
-                <input type="text" id="name" name="name" required>
-                            
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="phone">Telefone:</label>
-                <input type="tel" id="phone" name="phone" required oninput="mascaraTelefone(this)">
-                
-                <button type="submit" class="form-submit-button">Enviar</button>
-            </form>
-            
+<div class="form-section" id="summary-section">
+    <div class="summary-intro">
+        <h2 class="intro-title">Free Consultation to Review Your Design</h2>
+        <p class="intro-text">Our designers are experts at finding the right mix of price and design. They will walk you through your selected options and refine them to get the price point you need with the look and feel you desire.</p>
+    </div>
+    <h2 class="section-title">Register</h2>
+    <form id="cadastro-form" class="compact-form">
+        <label for="name">Full name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="phone">Telephone:</label>
+        <input type="tel" id="phone" name="phone" required oninput="mascaraTelefone(this)">
+        
+        <!-- Novo campo textarea -->
+        <label for="description">Describe what you need done</label>
+        <textarea id="description" name="description" rows="4" required placeholder="For example, 'I want a full staircase remodel and need expert design advice', or 'I need to replace carpeted stairs with wood'."></textarea>
+        
+        <button type="submit" class="form-submit-button">Send</button>
+    </form>
+    
+    <h2 class="section-title">Resume</h2>
+    <p>Here's the summary of your choices:</p>
 
-            <h2 class="section-title">Resumo</h2>
-            <p>Aqui está o resumo das suas escolhas:</p>
+    <div class="summary-container">
+        <p><strong>Stair Type:</strong> <span id="summary-stair-type"></span></p>
+        <p><strong>Stair Location:</strong> <span id="summary-stair-location"></span></p>
+        <p><strong>Railing Type:</strong> <span id="summary-railing"></span></p>
+        <p><strong>Tread Type:</strong> <span id="summary-tread"></span></p>
+    </div>
+</div>
 
-            <div class="summary-container">
-                <p><strong>Stair Type:</strong> <span id="summary-stair-type"></span></p>
-                <p><strong>Stair Location:</strong> <span id="summary-stair-location"></span></p>
-                <p><strong>Railing Type:</strong> <span id="summary-railing"></span></p>
-                <p><strong>Tread Type:</strong> <span id="summary-tread"></span></p>
-            </div>
-        </div>
 
         <!-- Modal para Details -->
         <div id="details-modal" class="modal">
