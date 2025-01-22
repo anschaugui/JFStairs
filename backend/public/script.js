@@ -149,28 +149,21 @@ function mascaraTelefone(input) {
 }
 
 function sendFormData() {
-    const name = document.querySelector('#cadastro-form input[name="name"]').value;
     const email = document.querySelector('#cadastro-form input[name="email"]').value;
     const phone = document.querySelector('#cadastro-form input[name="phone"]').value;
     const description = document.querySelector('#cadastro-form textarea[name="description"]').value;
-
-    if (!name || !email || !phone || !description) {
-        alert('Por favor, preencha todos os campos obrigatórios.');
-        return;
-    }
 
     const formData = {
         stairType: selections.stairType || 'Not selected',
         stairLocation: selections.stairLocation || 'Not selected',
         railingType: selections.railingType || 'Not selected',
         treadType: selections.treadType || 'Not selected',
-        name: name,
+        name: document.getElementById('name').value,
+        lastName: document.getElementById('last-name') ? document.getElementById('last-name').value : 'Not provided',
         email: email,
         phone: phone,
-        description: description // Inclui o campo "description"
+        description: description || 'Not provided' // Adicionando o campo description
     };
-
-    console.log('Enviando dados:', formData);
 
     fetch('https://jfstairs-6kyn.onrender.com/proxy', {
         method: 'POST',
@@ -194,6 +187,7 @@ function sendFormData() {
         alert('Erro ao enviar dados. Verifique o console para mais detalhes.');
     });
 }
+
 
 
 
