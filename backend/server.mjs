@@ -44,7 +44,7 @@ app.post('/proxy', async (req, res) => {
         lastName: req.body.lastName || 'Not provided',
         email: req.body.email || 'Not provided',
         phone: req.body.phone || 'Not provided',
-        description: req.body.description || 'Not provided' // Adicionando o campo description
+        description: req.body.description || 'Not provided'
     };
 
     console.log('Payload enviado ao Google Apps Script:', payload);
