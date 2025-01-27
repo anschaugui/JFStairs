@@ -50,10 +50,19 @@ app.post('/proxy', async (req, res) => {
         });
 
         console.log('Resposta do Google Apps Script:', response);
+        
+        // Verifica se o status da resposta é 200 (OK)
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Erro ao acessar Google Apps Script:', errorText);
+            res.status(response.status).send(`Erro ao acessar o script: ${response.statusText}`);
+            return;
+        }
+
         const text = await response.text();
         console.log('Texto da resposta:', text);
 
-        // Verifique se a resposta é válida antes de tentar processá-la
+        // Verifique se a resposta é JSON antes de tentar fazer o JSON.parse()
         if (text && text.includes('{')) {
             try {
                 const data = JSON.parse(text);
@@ -63,7 +72,7 @@ app.post('/proxy', async (req, res) => {
                 res.status(500).send('Erro ao processar dados recebidos do Google Apps Script.');
             }
         } else {
-            res.status(500).send('Resposta do Google Apps Script não é válida.');
+            res.status(500).send('Resposta do Google Apps Script não é válida ou inesperada.');
         }
     } catch (error) {
         console.error('Erro ao enviar os dados para o Google Apps Script:', error.message);
