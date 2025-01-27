@@ -41,7 +41,6 @@ app.post('/proxy', async (req, res) => {
         railingType: req.body.railingType || 'Not provided',
         treadType: req.body.treadType || 'Not provided',
         name: req.body.name || 'Not provided',
-        lastName: req.body.lastName || 'Not provided',
         email: req.body.email || 'Not provided',
         phone: req.body.phone || 'Not provided',
         description: req.body.description || 'Not provided'

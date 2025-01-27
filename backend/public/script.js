@@ -159,7 +159,6 @@ function sendFormData() {
         railingType: selections.railingType || 'Not selected',
         treadType: selections.treadType || 'Not selected',
         name: document.getElementById('name').value,
-        lastName: document.getElementById('last-name') ? document.getElementById('last-name').value : 'Not provided',
         email: email,
         phone: phone,
         description: description || 'Not provided' // Adicionando o campo description
