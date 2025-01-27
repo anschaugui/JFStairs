@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/proxy', async (req, res) => {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxKylQ2JwbDu-jN7PfOxx7wBYzI3Wz4IDtWQFKabGlrVD1Sr4Tp8JEO3AxY1ZAaUp-O/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyQIvQOaCIV5wMZ255DUJEzgFlvbHBuBScpZhQgHhaIO2IcAkBC_Qq868oQk7Qcq_W4/exec';
 
     const payload = {
         stairType: req.body.stairType || 'Not provided',
