@@ -15,22 +15,16 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-
 const __dirname = path.resolve();
-
-
 const publicPath = path.join(__dirname, 'backend', 'public');
 const imgPath = path.join(publicPath, 'img');
-
 
 app.use(express.static(publicPath)); 
 app.use('/img', express.static(imgPath)); 
 
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html')); 
 });
-
 
 app.post('/proxy', async (req, res) => {
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxKylQ2JwbDu-jN7PfOxx7wBYzI3Wz4IDtWQFKabGlrVD1Sr4Tp8JEO3AxY1ZAaUp-O/exec';
@@ -55,21 +49,27 @@ app.post('/proxy', async (req, res) => {
             body: JSON.stringify(payload)
         });
 
+        console.log('Resposta do Google Apps Script:', response);
         const text = await response.text();
+        console.log('Texto da resposta:', text);
 
-        try {
-            const data = JSON.parse(text);
-            res.json(data);
-        } catch (error) {
-            console.error('Erro ao processar os dados recebidos:', error.message);
-            res.status(500).send('Erro ao processar os dados recebidos do Google Apps Script.');
+        // Verifique se a resposta é válida antes de tentar processá-la
+        if (text && text.includes('{')) {
+            try {
+                const data = JSON.parse(text);
+                res.json(data);
+            } catch (error) {
+                console.error('Erro ao processar dados JSON:', error.message);
+                res.status(500).send('Erro ao processar dados recebidos do Google Apps Script.');
+            }
+        } else {
+            res.status(500).send('Resposta do Google Apps Script não é válida.');
         }
     } catch (error) {
         console.error('Erro ao enviar os dados para o Google Apps Script:', error.message);
         res.status(500).send('Erro ao enviar os dados para o Google Apps Script.');
     }
 });
-
 
 app.listen(port, () => {
     console.log(`Servidor intermediário rodando em http://localhost:${port}`);
