@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 
 
 app.post('/proxy', async (req, res) => {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby-3GwKqiHv9MT2KyLrNgyQ7qFeSpSM3MR0yA99yDOJ2A1TvOXoBQzAbAwis4M7GDVO/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxKylQ2JwbDu-jN7PfOxx7wBYzI3Wz4IDtWQFKabGlrVD1Sr4Tp8JEO3AxY1ZAaUp-O/exec';
 
     const payload = {
         stairType: req.body.stairType || 'Not provided',
