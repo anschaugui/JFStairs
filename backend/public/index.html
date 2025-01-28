@@ -111,65 +111,87 @@
             <button class="previous-button" onclick="goToStep(2)">Previous</button>
         </div>
 
-        <!-- Seção Pergunta sobre Railing -->
-        <div class="form-section" id="design-help-section">
-            <h2>Would you like to change the stair railing?</h2>
-            <p>Select an option below:</p>
-            <div class="design-help-options">
-                <div class="stair-option" onclick="handleRailingDecision(this, 'Sim')">
-                    <strong>Yes</strong>
-                </div>
-                <div class="stair-option" onclick="handleRailingDecision(this, 'Não')">
-                    <strong>No</strong>
-                </div>
-            </div>
-
-            <!-- Tipos de Railing (inicialmente ocultos) -->
-            <div id="railing-options" style="display: none;">
-                <h3>Railing</h3>
-                <div class="railing-options">
-                    <div class="stair-option" onclick="selectOption(this, 'railingType', 'glass', '#')"> <!-- Adicionado imagePath -->
-                        <strong>Glass Railing</strong>
-                    </div>
-                    <div class="stair-option" onclick="selectOption(this, 'railingType', 'horizontal', 'horizontal.png')">
-                        <strong>Horizontal Railing</strong>
-                    </div>
-                    <div class="stair-option" onclick="selectOption(this, 'railingType', 'vertical')">
-                        <strong>Vertical Railing</strong>
-                    </div>
-                    <div class="stair-option" onclick="selectOption(this, 'railingType', 'metal')">
-                        <strong>Metal Panels</strong>
-                    </div>
-                </div>
-            </div>
-
-            <button class="next-button" id="next-railing" onclick="goToStep(5)" disabled>Next</button>
-            <button class="previous-button" onclick="goToStep(3)">Previous</button>
+      <!-- Seção Pergunta sobre Railing -->
+<div class="form-section" id="railing-section">
+    <h2>Would you like to change the stair railing?</h2>
+    <p>Select an option below:</p>
+    <div class="design-help-options">
+        <div class="stair-option" onclick="handleRailingDecision(this, 'Sim')">
+            <strong>Yes</strong>
         </div>
-
-        <!-- Seção Tread -->
-        <div class="form-section" id="tread-section">
-            <h2>Treads</h2>
-            <p>Now let's design your steps.</p>
-
-            <h3>Select a Tread Type for Your Stair</h3>
-            <div class="option-container">
-                <div class="option" onclick="selectOption(this, 'treadType', 'Red Oak', 'oakred.jpg')">
-                    <img src="img/oakred.jpg" alt="Red Oak">
-                    <p>Red Oak</p>
-                </div>
-                <div class="option" onclick="selectOption(this, 'treadType', 'White Oak', 'Oak-White-cclc-1024x1024-1.jpg')">
-                    <img src="img/Oak-White-cclc-1024x1024-1.jpg" alt="White Oak">
-                    <p>White Oak</p>
-                </div>
-                <div class="option" onclick="selectOption(this, 'treadType', 'Yellow Oak', 'yellow-poplar.jpg')">
-                    <img src="img/yellow-poplar.jpg" alt="Yellow Oak">
-                    <p>Yellow Oak</p>
-                </div>
-            </div>
-            <button class="next-button" onclick="goToStep(6)">Next</button>
-            <button class="previous-button" onclick="goToStep(4)">Previous</button>
+        <div class="stair-option" onclick="handleRailingDecision(this, 'Não')">
+            <strong>No</strong>
         </div>
+    </div>
+
+    <!-- Tipos de Railing (inicialmente ocultos) -->
+    <div id="railing-options" style="display: none;">
+        <h3>Railing</h3>
+        <div class="railing-options">
+            <div class="stair-option" onclick="selectRailingOption(this, 'Glass')">
+                <strong>Glass Railing</strong>
+            </div>
+            <div class="stair-option" onclick="selectRailingOption(this, 'Horizontal')">
+                <strong>Horizontal Railing</strong>
+            </div>
+            <div class="stair-option" onclick="selectRailingOption(this, 'Vertical')">
+                <strong>Vertical Railing</strong>
+            </div>
+            <div class="stair-option" onclick="selectRailingOption(this, 'Metal')">
+                <strong>Metal Panels</strong>
+            </div>
+        </div>
+    </div>
+
+    <button class="next-button" id="next-railing" onclick="goToStep(5)" disabled>Next</button>
+    <button class="previous-button" onclick="goToStep(3)">Previous</button>
+</div>
+
+
+
+<!-- Seção Pergunta sobre Treads -->
+<div class="form-section" id="tread-decision-section">
+    <h2>Would you like to change the stair treads?</h2>
+    <p>Select an option below:</p>
+    <div class="tread-decision-options">
+        <div class="stair-option" onclick="handleTreadDecision(this, 'Sim')">
+            <strong>Yes</strong>
+        </div>
+        <div class="stair-option" onclick="handleTreadDecision(this, 'Não')">
+            <strong>No</strong>
+        </div>
+    </div>
+    
+    <!-- BOTÃO NEXT QUE FALTAVA -->
+    <button class="next-button" id="next-tread-decision" onclick="goToNextTreadStep()" disabled>Next</button>
+
+    <button class="previous-button" onclick="goToStep(4)">Previous</button>
+</div>
+
+<!-- Seção Treads -->
+<div class="form-section" id="tread-section">
+    <h2>Treads</h2>
+    <p>Now let's design your steps.</p>
+
+    <h3>Select a Tread Type for Your Stair</h3>
+    <div class="option-container">
+        <div class="option" onclick="selectOption(this, 'treadType', 'Red Oak', 'oakred.jpg')">
+            <img src="img/oakred.jpg" alt="Red Oak">
+            <p>Red Oak</p>
+        </div>
+        <div class="option" onclick="selectOption(this, 'treadType', 'White Oak', 'Oak-White-cclc-1024x1024-1.jpg')">
+            <img src="img/Oak-White-cclc-1024x1024-1.jpg" alt="White Oak">
+            <p>White Oak</p>
+        </div>
+        <div class="option" onclick="selectOption(this, 'treadType', 'Yellow Oak', 'yellow-poplar.jpg')">
+            <img src="img/yellow-poplar.jpg" alt="Yellow Oak">
+            <p>Yellow Oak</p>
+        </div>
+    </div>
+    <button class="next-button" onclick="goToStep(7)">Next</button>
+
+    <button class="previous-button" onclick="goToStep(5)">Previous</button>
+</div>
 
         <!-- Seção Summary & Cadastro -->
 <div class="form-section" id="summary-section">

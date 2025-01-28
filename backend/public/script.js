@@ -40,15 +40,16 @@ const selections = {
     treadType: ''
 };
 
-// Abre o modal
 function openModal() {
+    console.log("📢 Modal de Design Help aberto!");
     document.getElementById('design-help-modal').style.display = 'flex';
 }
 
-// Fecha o modal
+// Fecha o modal corretamente
 function closeModal() {
     document.getElementById('design-help-modal').style.display = 'none';
 }
+
 
 // Alterna a visibilidade do modal "Details"
 function openDetailsModal() {
@@ -72,23 +73,56 @@ window.onclick = function (event) {
     }
 };
 
-// Navega para a etapa especificada
 function goToStep(stepNumber) {
-    const currentStep = document.querySelector('.form-section.active');
-    if (currentStep) currentStep.classList.remove('active');
+    console.log(`🔄 Tentando avançar para a etapa ${stepNumber}`);
 
-    document.querySelectorAll('.form-section')[stepNumber - 1].classList.add('active');
+    // Esconde todas as seções do formulário
+    document.querySelectorAll('.form-section').forEach(section => {
+        section.classList.remove('active');
+        section.style.display = 'none';
+    });
 
-    document.querySelectorAll('.step-header .step').forEach(step => step.classList.remove('active'));
-    document.querySelector(`.step-header .step[data-step="${stepNumber}"]`).classList.add('active');
+    // Mapeia as seções corretamente
+    const sectionMap = {
+        1: 'stair-type-section',
+        2: 'stair-location-section',
+        3: 'design-help-section',
+        4: 'railing-section',
+        5: 'tread-decision-section',
+        6: 'tread-section',
+        7: 'summary-section'
+    };
 
-    // Atualiza o resumo ao chegar no final
-    if (stepNumber === 6) {
-        updateSummary();
+    let nextSection = document.getElementById(sectionMap[stepNumber]);
+
+    if (nextSection) {
+        nextSection.classList.add('active');
+        nextSection.style.display = 'block';
+        console.log(`✅ Avançou para a etapa ${stepNumber}`);
+
+        // **ATUALIZA O CABEÇALHO SUPERIOR**
+        document.querySelectorAll('.step-header .step').forEach(step => {
+            step.classList.remove('active');
+        });
+
+        const activeStep = document.querySelector(`.step-header .step[data-step="${stepNumber}"]`);
+        if (activeStep) {
+            activeStep.classList.add('active');
+        }
+
+        // **ATUALIZA O RESUMO SE FOR A ETAPA FINAL**
+        if (stepNumber === 7) {
+            console.log("📢 Atualizando resumo antes de exibir Summary");
+            updateSummary();
+        }
+    } else {
+        console.error(`❌ Seção da etapa ${stepNumber} não encontrada.`);
     }
 }
 
-// Seleciona uma opção genérica em qualquer etapa
+
+
+
 function selectOption(element, selectionType, value, imagePath = null) {
     const parentSection = element.closest('.form-section');
 
@@ -106,28 +140,30 @@ function selectOption(element, selectionType, value, imagePath = null) {
         document.getElementById('image-container').style.backgroundImage = `url('img/${imagePath}')`;
     }
 
-    // Mostra o modal se o usuário escolher "Não" em Design Help
+    // **Exibe o modal de Design Help quando o usuário seleciona "No"**
     if (selectionType === 'designHelp' && value === 'Não') {
-        openModal();
+        console.log("🔔 Abrindo modal de Design Help...");
+        openModal(); // Chama a função que exibe o modal
     }
 
     // Atualiza o botão "Next" para a próxima etapa dinamicamente
     if (selectionType === 'railingType') {
         const nextButton = document.getElementById('next-railing');
         if (nextButton) {
-            nextButton.dataset.nextStep = 'tread-section';
-            nextButton.disabled = false; // Habilita o botão, caso esteja desativado
+            nextButton.disabled = false; // Habilita o botão
         }
     }
 }
 
-// Atualiza o resumo final com as escolhas
+
+// Atualiza o resumo final com as escolhas feitas pelo usuário
 function updateSummary() {
     document.getElementById('summary-stair-type').textContent = selections.stairType || 'Not selected';
     document.getElementById('summary-stair-location').textContent = selections.stairLocation || 'Not selected';
     document.getElementById('summary-railing').textContent = selections.railingType || 'Not selected';
     document.getElementById('summary-tread').textContent = selections.treadType || 'Not selected';
 }
+
 
 // Máscara para telefone
 function mascaraTelefone(input) {
@@ -226,13 +262,17 @@ function sendDesignHelpFormData() {
         .catch(error => console.error('Erro:', error));
 }
 
-// Gerencia a decisão sobre alterar o Railing
 function handleRailingDecision(element, value) {
-    document.querySelectorAll('#design-help-section .stair-option').forEach(option => {
+    // Remove seleção prévia e aplica nova seleção
+    document.querySelectorAll('#railing-section .stair-option').forEach(option => {
         option.classList.remove('selected');
     });
     element.classList.add('selected');
 
+    // Armazena a escolha do usuário
+    selections.railingType = value;
+
+    // Verifica se o usuário quer alterar o Railing
     const railingOptions = document.getElementById('railing-options');
     const nextButton = document.getElementById('next-railing');
 
@@ -241,10 +281,25 @@ function handleRailingDecision(element, value) {
         nextButton.disabled = true; // Desativa o botão até que um tipo seja selecionado
     } else {
         railingOptions.style.display = 'none'; // Oculta as opções de Railing
-        nextButton.dataset.nextStep = 'tread-section'; // Avança diretamente para Tread
-        nextButton.disabled = false; // Habilita o botão "Next"
+        nextButton.disabled = false; // Habilita o botão Next
     }
 }
+
+// Habilitar o botão "Next" ao selecionar um tipo de Railing
+function selectRailingOption(element, railingType) {
+    // Remove seleção prévia e aplica nova seleção
+    document.querySelectorAll('#railing-options .stair-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    element.classList.add('selected');
+
+    // Armazena a escolha do usuário
+    selections.railingType = railingType;
+
+    // Habilita o botão "Next"
+    document.getElementById('next-railing').disabled = false;
+}
+
 
 // Avança para a próxima etapa com base na escolha
 function goToNextStep() {
@@ -294,5 +349,30 @@ function goToNextStep() {
     const stepToActivate = document.querySelector(`.step-header .step[data-step="${stepIndex}"]`);
     if (stepToActivate) {
         stepToActivate.classList.add('active');
+    }
+}
+
+
+function handleTreadDecision(element, decision) {
+    // Remove seleção prévia e aplica nova seleção
+    document.querySelectorAll('#tread-decision-section .stair-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    element.classList.add('selected');
+
+    // Habilita o botão "Next" ao selecionar uma opção
+    document.getElementById('next-tread-decision').disabled = false;
+
+    // Armazena a escolha do usuário
+    selections.treadDecision = decision;
+}
+
+function goToNextTreadStep() {
+    console.log(`📢 Usuário escolheu modificar os Treads? ${selections.treadDecision}`);
+
+    if (selections.treadDecision === 'Sim') {
+        goToStep(6); // Ir para seleção de Treads
+    } else {
+        goToStep(7); // Pular direto para o Summary
     }
 }
