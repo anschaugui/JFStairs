@@ -287,9 +287,15 @@ function handleRailingDecision(element, value) {
         railingOptions.style.display = 'none'; // Oculta as opções de Railing
         nextButton.disabled = false; // Habilita o botão Next
     }
+
+    // Forçar o scroll para o topo após a seleção da opção
+    document.documentElement.scrollTop = 0; // Para navegadores modernos (Chrome, Firefox, Edge)
+    document.body.scrollTop = 0; // Para navegadores mais antigos (Safari)
+
+    // Alternativa mais moderna e robusta, rolar o topo da página
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Rolagem suave para o topo
 }
 
-// Habilitar o botão "Next" ao selecionar um tipo de Railing
 function selectRailingOption(element, railingType) {
     // Remove seleção prévia e aplica nova seleção
     document.querySelectorAll('#railing-options .stair-option').forEach(option => {
@@ -302,7 +308,12 @@ function selectRailingOption(element, railingType) {
 
     // Habilita o botão "Next"
     document.getElementById('next-railing').disabled = false;
+
+    // Forçar o scroll para o topo da página após a seleção da opção (depois de habilitar o botão "Next")
+    const topElement = document.querySelector('.step-header'); // Elemento que pode ser usado como referência para o topo
+    topElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Rola suavemente até o topo
 }
+
 
 
 // Avança para a próxima etapa com base na escolha
