@@ -120,14 +120,11 @@ function goToStep(stepNumber) {
     }
 }
 
-
-
-
 function selectOption(element, selectionType, value, imagePath = null) {
     const parentSection = element.closest('.form-section');
 
     // Atualiza visualmente a seleção
-    parentSection.querySelectorAll('.stair-option, .option').forEach(option => {
+    parentSection.querySelectorAll('.stair-option').forEach(option => {
         option.classList.remove('selected');
     });
     element.classList.add('selected');
@@ -140,9 +137,8 @@ function selectOption(element, selectionType, value, imagePath = null) {
         document.getElementById('image-container').style.backgroundImage = `url('img/${imagePath}')`;
     }
 
-    // **Exibe o modal de Design Help quando o usuário seleciona "No"**
+    // Exibe o modal de Design Help quando o usuário seleciona "Não"
     if (selectionType === 'designHelp' && value === 'Não') {
-        console.log("🔔 Abrindo modal de Design Help...");
         openModal(); // Chama a função que exibe o modal
     }
 
@@ -153,7 +149,15 @@ function selectOption(element, selectionType, value, imagePath = null) {
             nextButton.disabled = false; // Habilita o botão
         }
     }
+
+    // Forçar o scroll para o topo da página após a seleção da opção
+    document.documentElement.scrollTop = 0; // Para navegadores modernos (Chrome, Firefox, Edge)
+    document.body.scrollTop = 0; // Para navegadores mais antigos (Safari)
+
+    // Alternativa mais moderna e robusta, rolar o topo da página
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Rolagem suave para o topo
 }
+
 
 
 // Atualiza o resumo final com as escolhas feitas pelo usuário
